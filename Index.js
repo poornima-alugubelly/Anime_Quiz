@@ -45,7 +45,10 @@ var questions = [{
 },{
   question: chalk.yellowBright("What is the highest rated anime on MAL?") + chalk.blueBright("\n A) Gintama \n B) Erased \n C) FMAB \n D) FLCL \n "),
   answer: "C"
-  }] ;
+  },,
+  {question: chalk.yellowBright("Who is the author of Berserk?") + chalk.blueBright("\n A) Kentaro Miura \n B)Tite Kubo \n C) Keigo Higashina \n D)Togashiro \n"),
+    answer: "A"}
+  ] ;
 
 for(var i=0; i<questions.length; i++){
   var currentQuestion = questions[i];
