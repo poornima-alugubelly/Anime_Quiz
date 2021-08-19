@@ -67,12 +67,12 @@ for(var i=0;i<scoreBoard.length-1; i++){
 console.log("Currently the highest score on this quiz is " + max);
 
 if(score>=max){
-    console.log("Congratulations! You have achieved max score 🔥")
+    console.log("Congratulations! You have achieved the new high score 🔥")
     console.log("Please send me a screen shot!")
   }
 
   else{
-    console.log("Missed it by " + (max-score) + " points 😔")
+    console.log("You missed it by " + (max-score) + " points 😔")
   }
 
 
