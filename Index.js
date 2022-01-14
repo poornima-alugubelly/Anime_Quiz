@@ -1,14 +1,14 @@
-var readlineSync = require("readline-sync");
-var chalk = require("chalk");
+const readlineSync = require("readline-sync");
+const chalk = require("chalk");
  
-var score = 0;
+let playerScore = 0;
 
 console.log(chalk.cyanBright.italic("Hi This is Poornima"));
-var userName = readlineSync.question(chalk.cyanBright.italic("What's your name ?  "));
+const playerName = readlineSync.question(chalk.cyanBright.italic("What's your name ?  "));
 
-console.log(chalk.cyanBright.italic("Welcome " + chalk.magentaBright.bold(userName) + " let's see how well you know about anime"));
+console.log(chalk.cyanBright.italic("Welcome " + chalk.magentaBright.bold(playerName) + " let's see how well you know about anime"));
 
-var scoreBoard=[{
+const scoreBoard=[{
   name: "Apoorva: ",
   score: 1,
 },
@@ -17,23 +17,23 @@ var scoreBoard=[{
   score: 3,
 }]
 
-function play(question, answer){
-  var userAnswer = readlineSync.question(question);
+const play = (question,answer) => {
+  let userAnswer = readlineSync.question(question);
   if(userAnswer.toUpperCase() === answer.toUpperCase()){
     console.log(chalk.green("Correct!"));
-    score = score + 1;
+    playerScore = playerScore + 1;
   }else
   {
     console.log(chalk.redBright("Wrong Answer!"));
   }
 
- console.log(chalk.cyanBright.italic("Your current score is " + chalk.magentaBright.bold(score) )); 
+ console.log(chalk.cyanBright.italic("Your current score is " + chalk.magentaBright.bold(playerScore) )); 
 
 }
 
 console.log("-----------------------------");
 
-var questions = [{
+const questions = [{
     question: chalk.yellowBright("Which country is anime from?") + chalk.blueBright("\n A) China \n B) Japan \n C) USA \n D) India \n "),
     answer: "B"
 },{
@@ -45,34 +45,29 @@ var questions = [{
 },{
   question: chalk.yellowBright("What is the highest rated anime on MAL?") + chalk.blueBright("\n A) Gintama \n B) Erased \n C) FMAB \n D) FLCL \n "),
   answer: "C"
-  },,
-  {question: chalk.yellowBright("Who is the author of Berserk?") + chalk.blueBright("\n A) Kentaro Miura \n B)Tite Kubo \n C) Keigo Higashina \n D)Togashiro \n"),
+  },
+  {question: chalk.yellowBright("Who is the author of Berserk?") + chalk.blueBright("\n A) Kentaro Miura \n B) Tite Kubo \n C) Keigo Higashina \n D) Togashiro \n"),
     answer: "A"}
   ] ;
-
-for(var i=0; i<questions.length; i++){
-  var currentQuestion = questions[i];
-  play(currentQuestion.question,
-  currentQuestion.answer);
-}
+questions.forEach( (currentQnA)=> {
+      play(currentQnA.question,currentQnA.answer)
+})
 
 console.log("-------------");
-console.log("You scored: ", score);
+console.log("You scored: ", playerScore);
 
-var max=0;
+let maxScore=0;
+scoreBoard.forEach((player,index) => maxScore = player.score>maxScore? player.score: maxScore
+)
 
-for(var i=0;i<scoreBoard.length-1; i++){
-     max = Math.max(scoreBoard[i].score,scoreBoard[i+1].score)
-  } 
-console.log("Currently the highest score on this quiz is " + max);
+console.log("Currently the highest score on this quiz is " + maxScore);
 
-if(score>=max){
-    console.log("Congratulations! You have achieved the new high score 🔥")
+if(playerScore>=maxScore){
+    console.log("Congratulations! You have achieved new high score 🔥")
     console.log("Please send me a screen shot!")
   }
 
   else{
-    console.log("You missed it by " + (max-score) + " points 😔")
+    console.log("You missed it by " + (maxScore-playerScore) + " points 😔")
   }
-
 
